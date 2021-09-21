@@ -14,13 +14,12 @@ def find_index(c):  # find index of maximum value
 m=np.loadtxt(sys.argv[1],delimiter=',')  # convert a csv file to a matrix from file sys.argv[1]
 mt=m.T #transpose matrix
 
-times=np.empty(0)
+times=np.empty(0) # array for storing result
 i=0
 while (i+99)<len(mt[1]):
 #computing cross-correlation by fft
   v1=mt[1][i:i+99];v2=mt[2][i:i+99]
   c=1.0/(np.linalg.norm(v1)*np.linalg.norm(v2)) 
-  fft_len=13
   f1=np.fft.fft(v1)
   f2=np.conjugate(np.fft.fft(v2))
   ff=f1*f2
